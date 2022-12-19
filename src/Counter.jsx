@@ -3,22 +3,21 @@ import './index.scss'
 
 
 export const Counter = () => {
-    let [count, setCount] = useState(0);
+    const [count, setCount] = useState(0);
     const [chang, setChang] = useState(true);
 
     const change = () => {
         setChang(!chang)
     }
-    function res () {
-        setCount(count = 0)
+    function onResp () {
+        setCount( 0)
     }
 
-    const plus = () => {
-        setCount(++ count)
-        console.log(plus)
+    const onClickPlus = () => {
+        setCount(count + 1)
     }
-    const minus = () => {
-        setCount(-- count)
+    const onClickMinus = () => {
+        setCount(count - 1)
     }
     const onClickDivide = () => {
         setCount(count / 2)
@@ -34,24 +33,28 @@ export const Counter = () => {
     }
 
     const inputHandler = (e) => {
-        setCount(count = e.target.value )
+        setCount( + e.target.value )
     }
 
     return (
         <div>
             <h2>Счетчик:</h2>
-            <input className='inputCount' value={count} onChange={(event => inputHandler(event))}/>
+            <input
+                className='inputCount'
+                type='number'
+                value={count}
+                onChange={(event => inputHandler(event))}/>
             {chang ? (
                 <div>
                     <button
                         className="minus"
-                        onClick={minus}
+                        onClick={onClickMinus}
                     >
                         - Минус
                     </button>
                     <button
                         className="plus"
-                        onClick={plus}
+                        onClick={onClickPlus}
                     >
                         Плюс +
                     </button>
@@ -81,7 +84,7 @@ export const Counter = () => {
                 </button>
                 <button
                     className="regimeChange"
-                    onClick={res}
+                    onClick={onResp}
                 >
                     Сбросить
                 </button>
