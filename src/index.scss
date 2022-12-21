@@ -11,7 +11,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 70vh;
   text-align: center;
 
   h1 {
@@ -35,7 +35,7 @@ body {
 
   .inputCount {
     outline: none;
-    background-color: #edf6f9;
+    background-color: transparent;
     font-size: 5rem;
     border: none;
     margin: 30px 0;

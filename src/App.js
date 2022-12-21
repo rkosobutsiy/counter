@@ -1,11 +1,21 @@
-import './index.scss';
-import {Counter} from "./Counter";
+import { Routes, Route } from "react-router-dom";
+import {Home} from "./pages/Home/Home"
+import {Counter} from "./pages/Counter/Counter";
+import {Modal} from "./pages/Modal/Modal";
+
+import { Layout } from "./components/Layout";
 
 function App() {
   return (
-      <div className="App">
-        <Counter />
-      </div>
+      <>
+          <Routes>
+              <Route path='/' element={<Layout />}>
+                  <Route index element={<Home/>}/>
+                  <Route path='counter' element={<Counter/>}/>
+                  <Route path='modal' element={<Modal/>}/>
+              </Route>
+          </Routes>
+      </>
   )
 }
 export default App;
