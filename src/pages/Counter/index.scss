@@ -22,6 +22,7 @@ body {
     &.plus {
       color: #2a9d8f;
     }
+
     &.minus {
       color: #e63946;
     }
@@ -77,6 +78,7 @@ body {
       box-shadow: 0 4px 0 darken(#2a9d8f, 10%);
       border: 1px solid darken(#2a9d8f, 15%);
     }
+
     &.reset {
       background-color: #1a1a36;
       color: #fff;

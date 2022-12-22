@@ -1,5 +1,5 @@
 import {useState} from "react";
-import '../../index.scss'
+import './index.scss'
 
 
 export const Counter = () => {
@@ -9,8 +9,9 @@ export const Counter = () => {
     const change = () => {
         setChang(!chang)
     }
-    function onResp () {
-        setCount( 0)
+
+    function onResp() {
+        setCount(0)
     }
 
     const onClickPlus = () => {
@@ -33,7 +34,7 @@ export const Counter = () => {
     }
 
     const inputHandler = (e) => {
-        setCount( + e.target.value )
+        setCount(+e.target.value)
     }
 
     return (
