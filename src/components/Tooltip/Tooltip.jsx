@@ -1,58 +1,35 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { useState } from "react";
+import { oneOf } from "prop-types";
+import classNames from "classnames";
 
-import './Tooltip.scss';
+import "./Tooltip.scss";
 
-export class Tooltip extends Component {
-    static propTypes = {
-        children: PropTypes.node.isRequired,
-        content: PropTypes.string,
-        position: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
-        style: PropTypes.objectOf(PropTypes.string),
-    }
+export const Tooltip = ({
+  content,
+  style,
+  children,
+  position = oneOf(["top", "right", "bottom", "left"]),
+}) => {
+  const [visible, setVisibility] = useState(false);
 
-    static defaultProps = {
-        content: 'Tooltip content', style: {}, position: 'top'
-    }
+  const show = () => {
+    setVisibility(true);
+  };
+  const hide = () => {
+    setVisibility(false);
+  };
+  const classes = classNames("tooltip", position);
 
-    state = {
-        visible: false,
-    }
-
-    show = () => {
-        this.setVisibility(true);
-    }
-
-    hide = () => {
-        this.setVisibility(false);
-    }
-
-    setVisibility = visible => {
-        this.setState({visible});
-    }
-
-    render() {
-        const {visible} = this.state;
-        const {children, content, style, position} = this.props;
-
-        const classes = classNames('tooltip', position,);
-
-        return (
-            <span className="tooltipWrapper">
-                {
-                    visible &&
-                    <span style={style} className={classes}>
-                        {content}
-                    </span>}
-                <span
-                    className="targetElement"
-                    onMouseEnter={this.show}
-                    onMouseLeave={this.hide}
-                >
-                    {children}
-                </span>
-            </span>
-        );
-    }
-}
+  return (
+    <span className="tooltipWrapper">
+      {visible && (
+        <span style={style} className={classes}>
+          {content}
+        </span>
+      )}
+      <span className="targetElement" onMouseEnter={show} onMouseLeave={hide}>
+        {children}
+      </span>
+    </span>
+  );
+};

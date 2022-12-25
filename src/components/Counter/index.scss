@@ -13,6 +13,13 @@ body {
   justify-content: center;
   height: 70vh;
   text-align: center;
+  opacity: 1;
+  transition: 0.5s;
+
+  & > .active {
+  opacity: 0;
+  pointer-events: all;
+}
 
   h1 {
     color: #000;
