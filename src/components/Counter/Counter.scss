@@ -13,13 +13,8 @@ body {
   justify-content: center;
   height: 70vh;
   text-align: center;
-  opacity: 1;
-  transition: 0.5s;
-
-  & > .active {
-  opacity: 0;
-  pointer-events: all;
-}
+  background: linear-gradient(45deg, black, transparent);
+  margin: -20px;
 
   h1 {
     color: #000;

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import "./index.scss";
+import "./Counter.scss";
+import cross from "../../assets/images/icon/cross.svg";
 
-export const Counter = ({ active, setActive }) => {
+export const Counter = () => {
   const [count, setCount] = useState(0);
   const [chang, setChang] = useState(true);
 
@@ -37,10 +38,7 @@ export const Counter = ({ active, setActive }) => {
   };
 
   return (
-    <div
-      className={active ? "App active" : "App"}
-      onClick={() => setActive(false)}
-    >
+    <div className="App">
       <div>
         <h2>Счетчик:</h2>
         <input

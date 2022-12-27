@@ -4,7 +4,9 @@
 }
 
 .modal {
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+  display: flex;
   background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
   top: 0;
@@ -27,7 +29,7 @@
   background-color: white;
   transform: scale(0.5);
   transition: 0.5s;
-  width: 50%;
+  width: 35%;
   justify-content: center;
 }
 .modal__content.active {

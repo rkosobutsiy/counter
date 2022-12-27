@@ -1,5 +1,5 @@
 import "./Modal.scss";
-import cross from "../../Images/icon/cross.svg";
+import cross from "../../assets/images/icon/cross.svg";
 
 export const Modal = ({ open, setOpen, children }) => {
   return (
