@@ -3,10 +3,13 @@ import { useState } from "react";
 import "./Home.scss";
 import { Counter } from "../../components/Counter/Counter";
 import { Tooltip } from "../../components/Tooltip/Tooltip";
+import { Button } from "../../components/Button/Button";
+import { Quiz } from "../../components/Quiz/Quiz";
 
 export const Home = () => {
   const [modalActive, setModalActive] = useState(false);
   const [activeCounter, setActiveCounter] = useState(false);
+  const [activeQuiz, setActiveQuiz] = useState(false);
 
   return (
     <>
@@ -14,16 +17,21 @@ export const Home = () => {
         <nav>
           <ul className="nav">
             <Tooltip content="Счётчик" position="right">
-              <button onClick={() => setActiveCounter(true)}>Count</button>
+              <Button onClick={() => setActiveCounter(true)}>Счётчик</Button>
             </Tooltip>
             <Tooltip content="Модальное окно" position="right">
-              <button onClick={() => setModalActive(true)}>Modal</button>
+              <Button onClick={() => setModalActive(true)}>
+                Модальное окно
+              </Button>
+            </Tooltip>
+            <Tooltip content="Опросник" position="right">
+              <Button onClick={() => setActiveQuiz(true)}>Опросник</Button>
             </Tooltip>
           </ul>
         </nav>
       </div>
       <Modal open={activeCounter} setOpen={setActiveCounter} children>
-        <Counter active={activeCounter} setActive={setActiveCounter} />
+        <Counter />
       </Modal>
       <Modal open={modalActive} setOpen={setModalActive} children>
         <p>
@@ -32,6 +40,9 @@ export const Home = () => {
           minus, nulla porro possimus, praesentium recusandae sapiente
           voluptatem voluptates. Provident, vitae?
         </p>
+      </Modal>
+      <Modal open={activeQuiz} setOpen={setActiveQuiz} children>
+        <Quiz setOpen={setActiveQuiz} />
       </Modal>
     </>
   );

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Counter.scss";
-import cross from "../../assets/images/icon/cross.svg";
+import { Button } from "../Button/Button";
 
 export const Counter = () => {
   const [count, setCount] = useState(0);
@@ -49,30 +49,30 @@ export const Counter = () => {
         />
         {chang ? (
           <div>
-            <button className="minus" onClick={onClickMinus}>
+            <Button className="minus" onClick={onClickMinus}>
               - Минус
-            </button>
-            <button className="plus" onClick={onClickPlus}>
+            </Button>
+            <Button className="plus" onClick={onClickPlus}>
               Плюс +
-            </button>
+            </Button>
           </div>
         ) : (
           <div>
-            <button className="minus" onClick={onClickDivide}>
+            <Button className="minus" onClick={onClickDivide}>
               / Разделить
-            </button>
-            <button className="plus" onClick={onClickMultiply}>
+            </Button>
+            <Button className="plus" onClick={onClickMultiply}>
               Умножить *
-            </button>
+            </Button>
           </div>
         )}
         <div>
-          <button className="reset" onClick={change}>
+          <Button className="reset" onClick={change}>
             Поменять
-          </button>
-          <button className="regimeChange" onClick={onResp}>
+          </Button>
+          <Button className="regimeChange" onClick={onResp}>
             Сбросить
-          </button>
+          </Button>
         </div>
       </div>
     </div>
