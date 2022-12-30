@@ -1,20 +1,49 @@
 .Button {
-  text-decoration: none;
-  display: inline-block;
-  color: white;
-  padding: 20px 40px;
-  margin: 10px 20px;
-  border-radius: 10px;
-  font-family: 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
-  background-size: 200% auto;
-  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
-  transition: .5s;
+  width: 200px;
   cursor: pointer;
+  margin: 0 10px;
+  transition: all 0.05s ease-in-out;
+  text-align: center;
+  font-size: 22px;
+  border-radius: 15px;
+  padding: 10px 25px;
+
+  &.minus {
+    background-color: white;
+    box-shadow: 0 4px 0 #bdbdbd;
+    border: solid 0 #bdbdbd;
+  }
+  &.minus {
+    background-color: #e63946;
+    color: #fff;
+    box-shadow: 0 4px 0 darken(#e63946, 10%);
+    border: 1px solid darken(#e63946, 15%);
+  }
+
+  &.plus {
+    background-color: #2a9d8f;
+    color: #fff;
+    box-shadow: 0 4px 0 darken(#2a9d8f, 10%);
+    border: 1px solid darken(#2a9d8f, 15%);
+  }
+
+  &.regimeChange {
+    margin-top: 10px;
+    background-color: #1a1adc;
+    color: #fff;
+    box-shadow: 0 4px 0 darken(#2a9d8f, 10%);
+    border: 1px solid darken(#2a9d8f, 15%);
+  }
+
+  &.reset {
+    background-color: #1a1a36;
+    color: #fff;
+    box-shadow: 0 4px 0 darken(#651d1d, 10%);
+    border: 1px solid darken(#2a9d8f, 15%);
+  }
 
   &:hover {
-    background-position: right center;
+    transform: translateY(-2px);
+    box-shadow: none;
   }
 }

@@ -1,4 +1,4 @@
-import "./Quiz.scss";
+import "../Quiz/Quiz.scss";
 
 export const Game = ({ question, onClickVariant, step, questions }) => {
   const percentage = Math.round((step / questions.length) * 100);

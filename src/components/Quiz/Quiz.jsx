@@ -1,9 +1,9 @@
 import "./Quiz.scss";
-import { Game } from "./Game";
-import { Result } from "./Result";
+import { Game } from "../gameAndEnd/Game";
+import { Result } from "../gameAndEnd/Result";
 import { useState } from "react";
 
-export const Quiz = ({ setOpen }) => {
+export const Quiz = () => {
   const questions = [
     {
       title: "React - это ... ?",
@@ -56,7 +56,7 @@ export const Quiz = ({ setOpen }) => {
           setStep={setStep}
           correct={correct}
           questions={questions}
-          setOpen={setOpen}
+          setCorrect={setCorrect}
         />
       )}
     </div>
