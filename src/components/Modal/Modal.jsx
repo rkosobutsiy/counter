@@ -11,7 +11,12 @@ export const Modal = ({ open, setOpen, children }) => {
         className={open ? "modal__content active" : "modal__content"}
         onClick={(event) => event.stopPropagation()}
       >
-        <img onClick={() => setOpen(false)} src={cross} alt="" />
+        <img
+          className="cross"
+          onClick={() => setOpen(false)}
+          src={cross}
+          alt=""
+        />
         <div>{children}</div>
       </div>
     </div>

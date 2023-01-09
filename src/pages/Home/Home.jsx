@@ -5,11 +5,13 @@ import { Counter } from "../../components/Counter/Counter";
 import { Tooltip } from "../../components/Tooltip/Tooltip";
 import { Button } from "../../components/Button/Button";
 import { Quiz } from "../../components/Quiz/Quiz";
+import { UserHome } from "../../components/UserHome/UserHome";
 
 export const Home = () => {
   const [modalActive, setModalActive] = useState(false);
   const [activeCounter, setActiveCounter] = useState(false);
   const [activeQuiz, setActiveQuiz] = useState(false);
+  const [activeUser, setActiveUser] = useState(false);
 
   return (
     <>
@@ -27,6 +29,9 @@ export const Home = () => {
             <Tooltip content="Опросник" position="right">
               <Button onClick={() => setActiveQuiz(true)}>Опросник</Button>
             </Tooltip>
+            <Tooltip content="Users" position="right">
+              <Button onClick={() => setActiveUser(true)}>Users</Button>
+            </Tooltip>
           </ul>
         </nav>
       </div>
@@ -43,6 +48,9 @@ export const Home = () => {
       </Modal>
       <Modal open={activeQuiz} setOpen={setActiveQuiz} children>
         <Quiz setOpen={setActiveQuiz} />
+      </Modal>
+      <Modal open={activeUser} setOpen={setActiveUser} children>
+        <UserHome setOpen={setActiveUser} />
       </Modal>
     </>
   );

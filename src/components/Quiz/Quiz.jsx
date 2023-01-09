@@ -1,6 +1,6 @@
 import "./Quiz.scss";
-import { Game } from "../gameAndEnd/Game";
-import { Result } from "../gameAndEnd/Result";
+import { Game } from "../game/Game";
+import { Result } from "../EndComponents/Result";
 import { useState } from "react";
 
 export const Quiz = () => {
