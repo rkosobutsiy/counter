@@ -6,12 +6,14 @@ import { Tooltip } from "../../components/Tooltip/Tooltip";
 import { Button } from "../../components/Button/Button";
 import { Quiz } from "../../components/Quiz/Quiz";
 import { UserHome } from "../../components/UserHome/UserHome";
+import { Converter } from "../../components/Converter/Converter";
 
 export const Home = () => {
   const [modalActive, setModalActive] = useState(false);
   const [activeCounter, setActiveCounter] = useState(false);
   const [activeQuiz, setActiveQuiz] = useState(false);
   const [activeUser, setActiveUser] = useState(false);
+  const [activeConverter, setActiveConverter] = useState(false);
 
   return (
     <>
@@ -32,6 +34,11 @@ export const Home = () => {
             <Tooltip content="Users" position="right">
               <Button onClick={() => setActiveUser(true)}>Users</Button>
             </Tooltip>
+            <Tooltip content="Converter" position="right">
+              <Button onClick={() => setActiveConverter(true)}>
+                Converter
+              </Button>
+            </Tooltip>
           </ul>
         </nav>
       </div>
@@ -51,6 +58,9 @@ export const Home = () => {
       </Modal>
       <Modal open={activeUser} setOpen={setActiveUser} children>
         <UserHome setOpen={setActiveUser} />
+      </Modal>
+      <Modal open={activeConverter} setOpen={setActiveConverter} children>
+        <Converter setOpen={setActiveConverter} />
       </Modal>
     </>
   );
