@@ -18,12 +18,15 @@ export const Users = ({
     <>
       <div className="search">
         <img className="glass" src={search} alt="" />
-        <input
-          value={searchValue}
-          onChange={onChangeSearchValue}
-          type="text"
-          placeholder="Найти пользователя..."
-        />
+        <div className="input-count">
+          <input
+            value={searchValue}
+            onChange={onChangeSearchValue}
+            type="text"
+            placeholder="Найти пользователя..."
+          />
+          <h2 className="count">{invites.length}</h2>
+        </div>
       </div>
       {isLoading ? (
         <div className="skeleton-list">
