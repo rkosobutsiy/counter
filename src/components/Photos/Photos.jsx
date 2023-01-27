@@ -12,7 +12,7 @@ const cats = [
 export const Photos = () => {
   const [categoryId, setCategoryId] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
   const [collections, setCollections] = useState([]);
 
@@ -22,9 +22,7 @@ export const Photos = () => {
     const category = categoryId ? `category=${categoryId}` : "";
     // const pageParam = `page${page}`;
 
-    fetch(
-      `https://63d2ef314abff8883415c381.mockapi.io/Collection?page=${page}&limit=3&${category}`
-    )
+    fetch(`https://63d2ef314abff8883415c381.mockapi.io/Collection?${category}`)
       .then((res) => res.json())
       .then((json) => {
         setCollections(json);
@@ -34,7 +32,7 @@ export const Photos = () => {
         alert("Ошибка при получении данных");
       })
       .finally(() => setIsLoading(false));
-  }, [categoryId, page]);
+  }, [categoryId]);
 
   return (
     <div className="Photos">
@@ -71,16 +69,16 @@ export const Photos = () => {
             ))
         )}
       </div>
-      <ul className="pagination">
-        {[...Array(5)].map((obj, i) => (
-          <li
-            onClick={() => setPage(i + 1)}
-            className={page === i + 1 ? "active" : ""}
-          >
-            {i + 1}
-          </li>
-        ))}
-      </ul>
+      {/*<ul className="pagination">*/}
+      {/*  {[...Array(5)].map((obj, i) => (*/}
+      {/*    <li*/}
+      {/*      onClick={() => setPage(i + 1)}*/}
+      {/*      className={page === i + 1 ? "active" : ""}*/}
+      {/*    >*/}
+      {/*      {i + 1}*/}
+      {/*    </li>*/}
+      {/*  ))}*/}
+      {/*</ul>*/}
     </div>
   );
 };
