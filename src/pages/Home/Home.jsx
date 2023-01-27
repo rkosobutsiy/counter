@@ -7,6 +7,7 @@ import { Button } from "../../components/Button/Button";
 import { Quiz } from "../../components/Quiz/Quiz";
 import { UserHome } from "../../components/UserHome/UserHome";
 import { Converter } from "../../components/Converter/Converter";
+import {Photos} from "../../components/Photos/Photos";
 
 export const Home = () => {
   const [modalActive, setModalActive] = useState(false);
@@ -14,8 +15,10 @@ export const Home = () => {
   const [activeQuiz, setActiveQuiz] = useState(false);
   const [activeUser, setActiveUser] = useState(false);
   const [activeConverter, setActiveConverter] = useState(false);
+  const [activePhotos, setActivePhotos] = useState(false);
 
-  return (
+
+    return (
     <>
       <div className="navigation">
         <nav>
@@ -39,6 +42,11 @@ export const Home = () => {
                 Converter
               </Button>
             </Tooltip>
+              <Tooltip content="Photos" position="right">
+                  <Button onClick={() => setActivePhotos(true)}>
+                      Photos
+                  </Button>
+              </Tooltip>
           </ul>
         </nav>
       </div>
@@ -62,6 +70,9 @@ export const Home = () => {
       <Modal open={activeConverter} setOpen={setActiveConverter} children>
         <Converter setOpen={setActiveConverter} />
       </Modal>
+        <Modal open={activePhotos} setOpen={setActivePhotos} children>
+            <Photos setOpen={setActivePhotos} />
+        </Modal>
     </>
   );
 };

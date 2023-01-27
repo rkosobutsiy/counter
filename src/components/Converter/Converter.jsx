@@ -24,18 +24,18 @@ export const Converter = () => {
   //     });
   // }, []);
 
-  useEffect(() => {
-    axios
-      .get("https://belarusbank.by/api/kursExchange")
-      .then((res) => {
-        setRates(res.data);
-        console.log(res);
-      })
-      .catch((err) => {
-        console.warn(err);
-        alert("не удалось получить инфу");
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://belarusbank.by/api/kursExchange")
+  //     .then((res) => {
+  //       setRates(res.data);
+  //       console.log(res);
+  //     })
+  //     .catch((err) => {
+  //       console.warn(err);
+  //       // alert("не удалось получить инфу");
+  //     });
+  // }, []);
 
   const onChangeOnPrice = (value) => {
     const price = value / rates[fromCurrency];
