@@ -2,9 +2,13 @@ import React from "react";
 
 const defaultCurrencies = ["RUB", "USD", "EUR", "GBP"];
 
-// https://cdn.cur.su/api/latest.json
-
-export const Block = ({ value, currency, onChangeValue, onChangeCurrency }) => (
+export const Block = ({
+  value,
+  currency,
+  onChangeValue,
+  onChangeCurrency,
+  currencyOptions,
+}) => (
   <div className="block">
     <ul className="currencies">
       {defaultCurrencies.map((cur) => (

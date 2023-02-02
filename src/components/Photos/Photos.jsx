@@ -1,6 +1,8 @@
 import { Collection } from "./Collection";
 import React, { useEffect, useState } from "react";
 import "./Photos.scss";
+import { Modal } from "../Modal/Modal";
+import { CollectionModal } from "./CollectionModal";
 
 const cats = [
   { name: "Все" },
@@ -15,6 +17,7 @@ export const Photos = () => {
   // const [page, setPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
   const [collections, setCollections] = useState([]);
+  const [collectionsOne, setCollectionsOne] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,6 +36,11 @@ export const Photos = () => {
       })
       .finally(() => setIsLoading(false));
   }, [categoryId]);
+
+  // const click = (obj) => {
+  //   categoryId(obj);
+  // };
+  // console.log(click);
 
   return (
     <div className="Photos">
@@ -56,7 +64,10 @@ export const Photos = () => {
           placeholder="Поиск по названию"
         />
       </div>
-      <div className="content">
+      <div
+        // onClick={(e) => setCollectionsOne(e)}
+        className="content"
+      >
         {isLoading ? (
           <h2>Идёт загрузка...</h2>
         ) : (
@@ -69,6 +80,14 @@ export const Photos = () => {
             ))
         )}
       </div>
+      <Modal open={collectionsOne} setOpen={setCollectionsOne} children>
+        {/*// <CollectionModal key={i} name={obj.name} image={obj.photos} />*/}
+        <div>
+          {collections.map((obj, index) => (
+            <CollectionModal value={index} key={index} image={obj.photos} />
+          ))}
+        </div>
+      </Modal>
       {/*<ul className="pagination">*/}
       {/*  {[...Array(5)].map((obj, i) => (*/}
       {/*    <li*/}

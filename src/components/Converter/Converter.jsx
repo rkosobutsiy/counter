@@ -1,51 +1,48 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Block } from "./Block";
 import "./index.scss";
-import { json } from "react-router-dom";
-import axios from "axios";
 
 export const Converter = () => {
-  const [rates, setRates] = useState([]);
+  // const [rates, setRates] = useState({});
+  const ratesRef = useRef([]);
   const [fromCurrency, setFromCurrency] = useState("RUB");
   const [toCurrency, setToCurrency] = useState("USD");
-  const [toPrice, setToPrice] = useState(0);
+  const [toPrice, setToPrice] = useState(1);
   const [fromPrice, setFromPrice] = useState(0);
 
-  // useEffect(() => {
-  //   fetch("https://belarusbank.by/api/kursExchange")
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       setRates(json.rates);
-  //       console.log(json);
-  //     })
-  //     .catch((err) => {
-  //       console.warn(err);
-  //       alert("не удалось получить инфу");
-  //     });
-  // }, []);
+  const BASE_URL = "https://api.exchangerate.host/latest";
 
-  // useEffect(() => {
-  //   axios
-  //     .get("https://belarusbank.by/api/kursExchange")
-  //     .then((res) => {
-  //       setRates(res.data);
-  //       console.log(res);
-  //     })
-  //     .catch((err) => {
-  //       console.warn(err);
-  //       // alert("не удалось получить инфу");
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch(BASE_URL)
+      .then((res) => res.json())
+      .then((data) => {
+        // setRates(data.rates);
+        ratesRef.current = data.rates;
+        onChangeToPrice(1);
+      })
+      .catch((err) => console.warn(err));
+  }, []);
 
-  const onChangeOnPrice = (value) => {
-    const price = value / rates[fromCurrency];
-    const result = price * rates[toCurrency];
-    setFromPrice(value);
+  const onChangeFromPrice = (value) => {
+    const price = value / ratesRef.current[fromCurrency];
+    const result = price * ratesRef.current[toCurrency];
+    setFromPrice(value.toFixed(3));
     setToPrice(result);
   };
   const onChangeToPrice = (value) => {
+    const result =
+      (ratesRef.current[fromCurrency] / ratesRef.current[toCurrency]) * value;
+    setFromPrice(result.toFixed(3));
     setToPrice(value);
   };
+
+  useEffect(() => {
+    onChangeFromPrice(fromPrice);
+  }, [fromCurrency]);
+
+  useEffect(() => {
+    onChangeToPrice(toPrice);
+  }, [toCurrency]);
 
   return (
     <div className="App">
@@ -53,7 +50,7 @@ export const Converter = () => {
         value={fromPrice}
         currency={fromCurrency}
         onChangeCurrency={setFromCurrency}
-        onChangeValue={onChangeOnPrice}
+        onChangeValue={onChangeFromPrice}
       />
       <Block
         value={toPrice}
